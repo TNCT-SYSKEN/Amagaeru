@@ -14,14 +14,13 @@ if __name__=="__main__":
 
     gray_from_img_green = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 
-    #laplacian = gray_img
-    #cv2.Laplacian(gray_img, laplacian, CV_32F)
-	#cv2.convertScaleAbs(laplacian, laplacian)
+    canny1 = cv2.Canny(gray_from_img_green, 50, 110)
+    canny2 = cv2.Canny(gray_from_img, 50, 110)
 
     #img_tmp = cv2.Sobel(gray_img, cv2.CV_32F, 1, 0)
 
     cv2.namedWindow("sample")
     cv2.imshow("sample", img)
-    cv2.imshow("sample1", gray_from_img_green)
-    cv2.imshow("sample2", gray_from_img)
+    cv2.imshow("sample1", canny1)
+    cv2.imshow("sample2", canny2)
     cv2.waitKey(0)
