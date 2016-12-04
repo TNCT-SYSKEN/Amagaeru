@@ -9,7 +9,6 @@ if __name__=="__main__":
     resize = cv2.resize(img, size)
 
     cv2.namedWindow("src")
-    cv2.namedWindow("sample")
     cv2.imshow("src", img)
     cv2.imshow("sample", resize)
     cv2.waitKey(0)
