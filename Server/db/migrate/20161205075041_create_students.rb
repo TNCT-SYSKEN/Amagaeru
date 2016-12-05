@@ -4,8 +4,8 @@ class CreateStudents < ActiveRecord::Migration
       t.string :depertment
       t.integer :grade
       t.integer :number
-      t.string :first_name
-      t.string :last_name
+      t.string :first_name #名前
+      t.string :last_name #苗字
 
       t.timestamps null: false
     end
