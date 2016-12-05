@@ -12,12 +12,7 @@
       <h1>All students</h1>
 
         <ul class="students">
-          <% @students.each do |student| %>
-            <li>
-              <%= student.number %>
-              <%= student.first_name + " " + student.last_name %>
-            </li>
-          <% end %>
+          <%= render @students %>
         </ul>
     </div>
   </body>
