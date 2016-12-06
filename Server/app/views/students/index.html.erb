@@ -9,8 +9,13 @@
   </head>
   <body>
     <div class="container">
-      <h1>All students</h1>
+      <%= form_tag "/students/index", :method => :get do %>
+      <%= select_tag :depertment, options_for_select(["C", "E", "S", "M"]), :prompt => "学科" %>
+      <%= select_tag :grade, options_for_select([1, 2, 3, 4, 5]), :prompt => "学年" %>
+      <%= submit_tag "選択" %>
+      <% end %>
 
+      <h1><%= @m %></h1>
         <ul class="students">
           <%= render @students %>
         </ul>
