@@ -16,20 +16,52 @@ if __name__=="__main__":
 
     gray_default = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 
+    # 4近傍の定義
+    neiborhood4 = np.array([[0, 1, 0],
+                            [1, 1, 1],
+                            [0, 1, 0]],
+                            np.uint8)
+
+    # 8近傍の定義
+    neiborhood8 = np.array([[1, 1, 1],
+                            [1, 1, 1],
+                            [1, 1, 1]],
+                            np.uint8)
+
+    # 8近傍で膨張処理
+    img_dilation = cv2.dilate(img,
+                              neiborhood8,
+                              iterations=1)
+    for i in range(3):
+        img_dilation = cv2.dilate(img_dilation,
+                              neiborhood8,
+                              iterations=1)
+
+    # 8近傍で縮小処理
+    img_erosion = cv2.erode(img_dilation,
+                              neiborhood8,
+                              iterations=1)
+    for i in range(3):
+        img_erosion = cv2.erode(img_erosion,
+                              neiborhood8,
+                              iterations=1)
+
     for i in range(height):
         for j in range(width):
-            img[i, j, 2] = 0 #赤の要素を0
-            if img[i, j, 0] < blue_min:
-                img[i, j, 0] = 255 #緑の要素を0
-            if img[i, j, 0] > blue_max:
-                img[i, j, 0] = 255 #緑の要素を0
-            if img[i, j, 1] < green_min:
-                img[i, j, 1] = 255 #緑の要素を0
-            if img[i, j, 1] > green_max:
-                img[i, j, 1] = 255 #緑の要素を0
-    gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
+            img_erosion[i, j, 2] = 0 #赤の要素を0
+            if img_erosion[i, j, 0] < blue_min:
+                img_erosion[i, j] = 255 #緑の要素を0
+            if img_erosion[i, j, 0] > blue_max:
+                img_erosion[i, j] = 255 #緑の要素を0
+            if img_erosion[i, j, 1] < green_min:
+                img_erosion[i, j] = 255 #緑の要素を0
+            if img_erosion[i, j, 1] > green_max:
+                img_erosion[i, j] = 255 #緑の要素を0
+
+    gray = cv2.cvtColor(img_erosion, cv2.COLOR_RGB2GRAY)
 
     cv2.imshow("src", img_copy)
-    cv2.imshow("gray_default", gray_default)
     cv2.imshow("gray", gray)
+    cv2.imwrite("gray.png", gray)
+    #cv2.imshow("test", img_erosion)
     cv2.waitKey(0)
