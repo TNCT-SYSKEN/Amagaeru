@@ -14,8 +14,9 @@
 ActiveRecord::Schema.define(version: 20161207090701) do
 
   create_table "day_timetables", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "timetable_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "students", force: :cascade do |t|
