@@ -9,7 +9,7 @@ def binarization(src_img, thresh):
         gray_img = src_img
 
     # 二値変換
-    max_pixel = 100
+    max_pixel = 255
     ret, img_dst = cv2.threshold(gray_img,
                                  thresh,
                                  max_pixel,
