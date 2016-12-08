@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20161207090701) do
 
   create_table "day_timetables", force: :cascade do |t|
     t.integer  "timetable_id"
+    t.string   "day"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
