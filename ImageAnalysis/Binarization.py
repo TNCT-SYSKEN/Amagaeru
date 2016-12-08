@@ -1,22 +1,17 @@
 import cv2
 import numpy as np
 
-if __name__=="__main__":
-    #cv2.namedWindow("Capture", cv2.WINDOW_AUTOSIZE)
+def binarization(src_img, thresh):
+    # グレースケールに変換
+    if len(src_img.shape) == 3:
+        gray_img = cv2.cvtColor(src_img, cv2.COLOR_BGR2GRAY)
+    else:
+        gray_img = src_img
 
-    img = cv2.imread("item/sample.JPG")
-
-    gray_img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
-
-    laplacian = gray_img
-    #cv2.Laplacian(gray_img, laplacian, CV_32F)
-	#cv2.convertScaleAbs(laplacian, laplacian)
-
-    img_tmp = cv2.Sobel(gray_img, cv2.CV_32F, 1, 0)
-
-    canny_img = cv2.Canny(gray_img, 50, 110)
-
-    cv2.namedWindow("sample")
-    cv2.imshow("canny", canny_img)
-    cv2.imshow("sample", img))
-    cv2.waitKey(0)
+    # 二値変換
+    max_pixel = 100
+    ret, img_dst = cv2.threshold(gray_img,
+                                 thresh,
+                                 max_pixel,
+                                 cv2.THRESH_BINARY)
+    return img_dst
