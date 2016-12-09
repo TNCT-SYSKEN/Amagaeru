@@ -26,8 +26,15 @@ if __name__ == '__main__':
     #canny法
     canny_img = cv2.Canny(gray_img, 100, 1000)
 
-    circles = cv2.HoughCircles(img_gamma,cv2.HOUGH_GRADIENT,1,20,
-                            param1=50,param2=30,minRadius=0,maxRadius=0)
+    circles = cv2.HoughCircles(canny_img, cv2.HOUGH_GRADIENT,
+                dp=2, minDist=20, param1=20, param2=110,
+                minRadius=30, maxRadius=70)
+
+    # Draw detected circles on the original image.
+    if circles is not None:
+        for (x, y, r) in circles[0]:
+            cv2.circle(canny_img, (x, y), r, (255, 255, 255), 1)
+
     # 表示
     cv2.imshow("Show LOW CONTRAST I", img_gamma)
     cv2.imshow("Show LOW CONTRAST Image", canny_img)
