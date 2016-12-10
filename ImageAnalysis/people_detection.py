@@ -4,10 +4,17 @@ import cv2
 import numpy as np
 from Binarization import *
 from Binarization2 import *
+from MouseColor import *
+
+def under(val):
+    if val < 0:
+        val = 0
+    return val
 
 if __name__ == '__main__':
     gamma_down =0.25
     gamma_up = 8
+
 
     # ルックアップテーブルの生成
     look_up_table1 = np.zeros((256, 1), dtype = 'uint8' )
@@ -15,6 +22,23 @@ if __name__ == '__main__':
 
     img_src = cv2.imread("./item/bright_hu.jpg", 1)
     img = img_src.copy()
+
+    # get_mouse_color(img)
+    # img[:,:] -= [70, 110, 170]
+    height, width = img.shape[:2]
+    for i in range(height):
+        for j in range(width):
+            if ((img.item(i, j, 0) < 100) & (img.item(i, j, 1) < 100) & (img.item(i, j, 2) < 100)):
+                img.itemset((i, j, 0), 255)
+                img.itemset((i, j, 1), 255)
+                img.itemset((i, j, 2), 255)
+            """
+            else:
+                img.itemset((i, j, 0), under(img.item(i, j, 0) - 100))
+                img.itemset((i, j, 1), under(img.item(i, j, 1) - 130))
+                img.itemset((i, j, 2), under(img.item(i, j, 2) - 200))
+            """
+    # get_mouse_color(img)
 
     #暗い補正
     for i in range(256):
@@ -32,14 +56,14 @@ if __name__ == '__main__':
                 minRadius=10, maxRadius=60)
 
     # Draw detected circles on the original image.
+    """
     if circles is not None:
         for (x, y, r) in circles[0]:
             cv2.circle(img, (x, y), r, (255, 255, 255), 1)
+    """
 
     # 表示
     cv2.imshow("canny", canny_img)
     cv2.imshow("people detection", img)
-    cv2.imwrite("canny.png", canny_img)
-    cv2.imwrite("people_detection.png", img)
     cv2.waitKey(0)
     #cv2.destroyAllWindows()

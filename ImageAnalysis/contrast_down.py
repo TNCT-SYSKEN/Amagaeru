@@ -48,7 +48,7 @@ if __name__ == '__main__':
     maxRadius ・・・ 最大半径
     """
     circles = cv2.HoughCircles(canny_img, cv2.HOUGH_GRADIENT,
-                dp=2, minDist=20, param1=20, param2=50,
+                dp=3, minDist=20, param1=20, param2=50,
                 minRadius=10, maxRadius=60)
 
     # imgに検出した円を書き込む
