@@ -3,8 +3,7 @@ import numpy as np
 
 
 if __name__=='__main__':
-
-    img_src = cv2.imread("./item/DSC00248.JPG",1)
+    img_src = cv2.imread("./item/DSC00246.JPG",1)
     #基準
     img_adj = cv2.imread("./item/sample.JPG",1)
 
@@ -12,7 +11,7 @@ if __name__=='__main__':
     ave2 = np.average(img_adj)
 
 
-    gamma = ave2/ave1
+    gamma = (ave2/ave1)*1.5
     look_up_table = np.ones((256,1), dtype='uint8')*0
 
     for i in range(256):
