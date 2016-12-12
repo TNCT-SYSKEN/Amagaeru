@@ -11,13 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161207090701) do
+ActiveRecord::Schema.define(version: 20161210050219) do
+
+  create_table "attendances", force: :cascade do |t|
+    t.string   "depertment"
+    t.integer  "grade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "day_attendances", force: :cascade do |t|
+    t.integer  "subject_attendance_id"
+    t.date     "date"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
 
   create_table "day_timetables", force: :cascade do |t|
     t.integer  "timetable_id"
     t.string   "day"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "student_statuses", force: :cascade do |t|
+    t.integer  "student_id"
+    t.integer  "day_attendance_id"
+    t.integer  "status"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "students", force: :cascade do |t|
@@ -28,6 +50,13 @@ ActiveRecord::Schema.define(version: 20161207090701) do
     t.string   "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "subject_attendances", force: :cascade do |t|
+    t.integer  "subject_id"
+    t.integer  "attendance_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "subjects", force: :cascade do |t|
