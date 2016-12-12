@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
   get "students/index"
   get "timetables/index"
   get "attendances/index"
