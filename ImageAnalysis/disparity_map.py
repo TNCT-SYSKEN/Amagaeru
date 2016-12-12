@@ -3,8 +3,8 @@ import cv2
 from matplotlib import pyplot as plt
 
 if __name__=="__main__":
-    imgL = cv2.imread('sample.JPG',0)
-    imgR = cv2.imread('rightside.JPG',0)
+    imgL = cv2.imread('item/sample.JPG',0)
+    imgR = cv2.imread('item/rightside.JPG',0)
 
     gray_l = cv2.GaussianBlur( cv2.equalizeHist(imgL),(5,5), 0)
     gray_r = cv2.GaussianBlur( cv2.equalizeHist(imgR),(5,5), 0)
@@ -26,9 +26,9 @@ if __name__=="__main__":
         #fullDP = False              # 完全な2パス動的計画法を使うならTrue
     )
     disp = stereo.compute(gray_l,gray_r)
-    disp = cv2.normalize(disp, disp, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)
+    # disp = cv2.normalize(disp, disp, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)
     #disparity = stereo.compute(gray_l, gray_r).astype(np.float32)/16
     #disparity = (disparity - minDisp) / numDisp
-    cv2.imshow("Show window",disp)
+    cv2.imshow("ShowWindow", disp)
     cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # cv2.destroyAllWindows()
