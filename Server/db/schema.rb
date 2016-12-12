@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212081604) do
+ActiveRecord::Schema.define(version: 20161212090730) do
 
   create_table "attendances", force: :cascade do |t|
     t.string   "department"
@@ -33,13 +33,6 @@ ActiveRecord::Schema.define(version: 20161212081604) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
-
-  create_table "student_statuses", force: :cascade do |t|
-    t.integer  "student_id"
-    t.integer  "day_attendance_id"
-    t.integer  "status"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
 
   create_table "seat_data", force: :cascade do |t|
     t.integer  "number"
@@ -68,8 +61,16 @@ ActiveRecord::Schema.define(version: 20161212081604) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "student_statuses", force: :cascade do |t|
+    t.integer  "student_id"
+    t.integer  "day_attendance_id"
+    t.integer  "status"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
   create_table "students", force: :cascade do |t|
-    t.string   "department"
+    t.string   "depertment"
     t.integer  "grade"
     t.integer  "number"
     t.string   "first_name"
@@ -99,6 +100,14 @@ ActiveRecord::Schema.define(version: 20161212081604) do
     t.integer  "grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "password_digest"
+    t.boolean  "authority",       default: false, null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
 end
