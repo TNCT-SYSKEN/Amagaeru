@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  depertment: MyString
+  department: MyString
   grade: 
 
 two:
-  depertment: MyString
+  department: MyString
   grade: 

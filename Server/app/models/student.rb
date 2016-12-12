@@ -1,6 +1,6 @@
 class Student < ActiveRecord::Base
-  def getDepertment
-    depertment
+  def getdepartment
+    department
   end
 
   def getGrade
