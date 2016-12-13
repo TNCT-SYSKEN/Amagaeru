@@ -5,8 +5,25 @@ import numpy as np
 from MouseColor import *
 from Binarization import *
 from Binarization2 import *
+from table_correction import *
+
+table = [[0 for i in range(8)] for j in range(6)]
 
 if __name__ == '__main__':
+    """
+    # 席情報の表示
+    for i in table:
+        for j in i:
+            print (j, end=' ')
+        print ()
+    print ()
+
+    # 席の補正情報を表示
+    for i in table_correction:
+        for j in i:
+            print (j, end=' ')
+        print ()
+    """
     #コントラストを下げる
     gamma_down =0.2
     #コントラストを上げる
@@ -70,7 +87,7 @@ if __name__ == '__main__':
     cv2.imshow("canny", canny_img)
     cv2.imshow("gray", gray_img)
     cv2.imshow("img", img)
-    # get_mouse_color(img)
+    get_mouse_color(cv2.resize(img, None, fx = 1/2, fy = 1/2))
     # cv2.imwrite("canny.png", canny_img)
     # cv2.imwrite("people_detection.png", img)
     cv2.waitKey(0)
