@@ -81,14 +81,22 @@ if __name__ == '__main__':
     # imgに検出した円を書き込む
     if circles is not None:
         for (x, y, r) in circles[0]:
-            cv2.circle(img, (x, y), r, (255, 255, 255), 1)
+            for table_c in table_correction:
+                print (table_c)
+                for (correction_x, correction_y, correction_r) in table_c:
+                    if correction_x == x and correction_y == y:
+                        cv2.circle(img, (x, y), r, (255, 255, 255), 1)
+                        print (x, y, r)
 
     # 表示
     cv2.imshow("canny", canny_img)
     cv2.imshow("gray", gray_img)
     cv2.imshow("img", img)
-    get_mouse_color(cv2.resize(img, None, fx = 1/2, fy = 1/2))
+    #1/2サイズで描画
+    # get_mouse_color(cv2.resize(img, None, fx = 1/2, fy = 1/2))
+    #デフォルトサイズで描画
+    get_mouse_color(img)
     # cv2.imwrite("canny.png", canny_img)
-    # cv2.imwrite("people_detection.png", img)
+    cv2.imwrite("people_detection.png", img)
     cv2.waitKey(0)
     #cv2.destroyAllWindows()
