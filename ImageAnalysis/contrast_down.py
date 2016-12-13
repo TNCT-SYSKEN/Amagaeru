@@ -8,7 +8,7 @@ from Binarization2 import *
 
 if __name__ == '__main__':
     #コントラストを下げる
-    gamma_down =0.25
+    gamma_down =0.2
     #コントラストを上げる
     gamma_up = 8
 
@@ -35,11 +35,13 @@ if __name__ == '__main__':
     gray_img = cv2.cvtColor(img_gamma, cv2.COLOR_RGB2GRAY)
 
     #膨張
-    for i in range(3):
-        gray_img = dilate(gray_img)
+    # for i in range(3):
+    gray_img = dilate(gray_img)
     #圧縮
     # for i in range(3):
-        # erosion(gray_img)
+    gray_img = erode(gray_img)
+    gray_img = dilate(gray_img)
+    gray_img = erode(gray_img)
 
     #canny法でエッジ検出
     canny_img = cv2.Canny(gray_img, 100, 1000)
@@ -66,7 +68,8 @@ if __name__ == '__main__':
 
     # 表示
     cv2.imshow("canny", canny_img)
-    cv2.imshow("people detection", gray_img)
+    cv2.imshow("gray", gray_img)
+    cv2.imshow("img", img)
     # get_mouse_color(img)
     # cv2.imwrite("canny.png", canny_img)
     # cv2.imwrite("people_detection.png", img)
