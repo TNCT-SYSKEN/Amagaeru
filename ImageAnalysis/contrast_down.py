@@ -10,7 +10,8 @@ from table_correction import *
 table = [[0 for i in range(8)] for j in range(6)]
 
 if __name__ == '__main__':
-    """
+
+    print (table)
     # 席情報の表示
     for i in table:
         for j in i:
@@ -18,6 +19,7 @@ if __name__ == '__main__':
         print ()
     print ()
 
+    """
     # 席の補正情報を表示
     for i in table_correction:
         for j in i:
@@ -81,12 +83,23 @@ if __name__ == '__main__':
     # imgに検出した円を書き込む
     if circles is not None:
         for (x, y, r) in circles[0]:
+            i = 0
             for table_c in table_correction:
-                print (table_c)
+                j = 0
                 for (correction_x, correction_y, correction_r) in table_c:
                     if correction_x == x and correction_y == y:
                         cv2.circle(img, (x, y), r, (255, 255, 255), 1)
+                        table[i][j] = 1
                         print (x, y, r)
+                    j += 1
+                i += 1
+
+    # talbleの描画
+    for i in table:
+        for j in i:
+            print (j, end=' ')
+        print ()
+    print ()
 
     # 表示
     cv2.imshow("canny", canny_img)
@@ -97,6 +110,6 @@ if __name__ == '__main__':
     #デフォルトサイズで描画
     get_mouse_color(img)
     # cv2.imwrite("canny.png", canny_img)
-    cv2.imwrite("people_detection.png", img)
+    # cv2.imwrite("people_detection.png", img)
     cv2.waitKey(0)
     #cv2.destroyAllWindows()
