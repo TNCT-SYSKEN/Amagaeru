@@ -25,10 +25,16 @@ if __name__=="__main__":
         P2 = 32*3*window_size**2,   # 視差のなめらかさを制御するパラメータ2
         #fullDP = False              # 完全な2パス動的計画法を使うならTrue
     )
+<<<<<<< HEAD
     disp = stereo.compute(gray_l,gray_r)
     # disp = cv2.normalize(disp, disp, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)
     #disparity = stereo.compute(gray_l, gray_r).astype(np.float32)/16
     #disparity = (disparity - minDisp) / numDisp
     cv2.imshow("ShowWindow", disp)
+=======
+    disparity = stereo.compute(gray_l, gray_r).astype(np.float32)/16
+    disparity = (disparity - minDisp) / numDisp
+    cv2.imshow("Show window",disparity)
+>>>>>>> 10d0342f37ab874907d5c2f465f4cb8e1c4563fb
     cv2.waitKey(0)
     # cv2.destroyAllWindows()
