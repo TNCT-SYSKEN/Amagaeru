@@ -36,7 +36,7 @@ if __name__ == '__main__':
 
     #膨張
     for i in range(3):
-        delate(gray_img)
+        gray_img = dilate(gray_img)
     #圧縮
     # for i in range(3):
         # erosion(gray_img)

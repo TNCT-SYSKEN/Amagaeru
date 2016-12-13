@@ -14,19 +14,22 @@ neiborhood8 = np.array([[1, 1, 1],
                         np.uint8)
 
 #膨張
-def delate(src_img):
+def dilate(src_img):
     # 8近傍で膨張処理
     for i in range(3):
         src_img = cv2.dilate(src_img,
                               neiborhood8,
                               iterations=1)
+    return src_img
+
 #圧縮
-def erosion(src_img):
+def erode(src_img):
     # 8近傍で縮小処理
     for i in range(3):
         src_img = cv2.erode(src_img,
                               neiborhood8,
                               iterations=1)
+    return src_img
 
 #2値化
 def binarization2(src_img):
