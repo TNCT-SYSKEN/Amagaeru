@@ -16,21 +16,15 @@ neiborhood8 = np.array([[1, 1, 1],
 #膨張
 def delate(src_img):
     # 8近傍で膨張処理
-    img_dilation = cv2.dilate(src_img,
-                              neiborhood8,
-                              iterations=1)
     for i in range(3):
-        img_dilation = cv2.dilate(img_dilation,
+        src_img = cv2.dilate(src_img,
                               neiborhood8,
                               iterations=1)
 #圧縮
 def erosion(src_img):
     # 8近傍で縮小処理
-    img_erosion = cv2.erode(src_img,
-                              neiborhood8,
-                              iterations=1)
     for i in range(3):
-        img_erosion = cv2.erode(img_erosion,
+        src_img = cv2.erode(src_img,
                               neiborhood8,
                               iterations=1)
 

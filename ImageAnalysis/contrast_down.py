@@ -2,6 +2,7 @@
 
 import cv2
 import numpy as np
+from MouseColor import *
 from Binarization import *
 from Binarization2 import *
 
@@ -33,6 +34,13 @@ if __name__ == '__main__':
     #カラーをグレー化
     gray_img = cv2.cvtColor(img_gamma, cv2.COLOR_RGB2GRAY)
 
+    #膨張
+    for i in range(3):
+        delate(gray_img)
+    #圧縮
+    # for i in range(3):
+        # erosion(gray_img)
+
     #canny法でエッジ検出
     canny_img = cv2.Canny(gray_img, 100, 1000)
 
@@ -48,7 +56,7 @@ if __name__ == '__main__':
     maxRadius ・・・ 最大半径
     """
     circles = cv2.HoughCircles(canny_img, cv2.HOUGH_GRADIENT,
-                dp=3, minDist=20, param1=20, param2=50,
+                dp=2, minDist=20, param1=20, param2=50,
                 minRadius=10, maxRadius=60)
 
     # imgに検出した円を書き込む
@@ -58,6 +66,9 @@ if __name__ == '__main__':
 
     # 表示
     cv2.imshow("canny", canny_img)
-    cv2.imshow("people detection", img)
+    cv2.imshow("people detection", gray_img)
+    # get_mouse_color(img)
+    # cv2.imwrite("canny.png", canny_img)
+    # cv2.imwrite("people_detection.png", img)
     cv2.waitKey(0)
     #cv2.destroyAllWindows()

@@ -60,11 +60,13 @@ if __name__=="__main__":
             numDisparities = 64,        # 最大の上限 16の倍数
             blockSize =13,              # SADWindowSize  SADの窓サイズ 3~13の奇数を推奨
             uniquenessRatio = 0,       # パーセント単位で表現されるマージン
-            speckleWindowSize = 0,      # フィルターのサイズ0は使用しない
-            speckleRange = 16,          # フィルターの視差の最大値1~2が推奨
+            speckleWindowSize = 0,      # フィルターのサイズ0は使用しない基本滝に50~200
+            speckleRange = 32,          # フィルターの視差の最大値1~2が推奨
             disp12MaxDiff = 0,          # left-right 視差チェックにおけて許容される最大の差
-            P1 = 8*3*window_size**2,    # 視差のなめらかさを制御するパラメータ1
-            P2 = 32*3*window_size**2,   # 視差のなめらかさを制御するパラメータ2
+            # P1 = 8*3*window_size**2,    # 視差のなめらかさを制御するパラメータ1
+            # P2 = 32*3*window_size**2,   # 視差のなめらかさを制御するパラメータ2
+            P1 = 10,
+            P2 = 10,
             #fullDP = False              # 完全な2パス動的計画法を使うならTrue
         )
         # disp = stereo.compute(gray_l,gray_r)
