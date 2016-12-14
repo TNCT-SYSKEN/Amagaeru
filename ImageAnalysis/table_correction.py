@@ -23,7 +23,7 @@ table_correction[1][3] = (0, 0, 0)
 table_correction[1][4] = (957, 243, 39)
 table_correction[1][5] = (0, 0, 0)
 table_correction[1][6] = (0, 0, 0)
-table_correction[1][7] = (0, 0, 0)
+table_correction[1][7] = (969, 691, 69)
 
 table_correction[2][0] = (1143, 37, 17)
 table_correction[2][1] = (0, 0 ,0)
