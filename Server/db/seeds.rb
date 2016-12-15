@@ -53,11 +53,11 @@ Attendance.create(depertment: "C",
 end
 
 20.times do |n|
-  s = SubjectAttendance.all[n + 1]
   d = n / 4
   4.times do |m|
-    DayAttendance.create(subject_attendance_id: n + 1,
-                         date: "2016/04/" + (m * 7 + d).to_s)
+    DayAttendance.create(attendance_id: 1,
+                         subject_attendance_id: n + 1,
+                         date: "2016-04-" + (Date.commercial(2016, 14 + m) + d).day.to_s)
   end
 end
 

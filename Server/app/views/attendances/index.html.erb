@@ -10,12 +10,11 @@
   <body>
     <div class="container">
       <%= form_tag "/attendances/index", :method => :get do %>
-      <%= select_tag :department, options_for_select(["C", "E", "S", "M"]), :prompt => "学科" %>
-      <%= select_tag :grade, options_for_select([1, 2, 3, 4, 5]), :prompt => "学年" %>
-      <% n = [] %>
-      <% DayAttendance.all.map { |d| n.push(d.date) } %>
-      <%= select_tag :date, options_for_select( n.uniq.compact.sort ), :prompt => "日付" %>
+      <%= select_tag :depertment, options_for_select(["C", "E", "S", "M"]), :prompt => "学科" %>
+      <%= select_tag :grade, options_for_select(1..5), :prompt => "学年" %>
+      <%= select_tag :week, options_for_select(1..52), :prompt => "日付" %>
       <%= select_tag :subject, options_for_select(Subject.all.map { |s| [s.name, s.id] }), :prompt => "科目" %>
+      <%= select_tag :mode, options_for_select(["office", "teacher"]), :prompt => "モード" %>
       <%= submit_tag "選択" %>
       <% end %>
 
@@ -27,6 +26,7 @@
               <% @subjectAttendance.day_attendances.each do |a| %>
               <th> <%= a.date %> </th>
               <% end %>
+
               <% @subjectAttendance.day_attendances.first.student_statuses.count.times do |n| %>
                 <tr>
                 <td> <%= @subjectAttendance.day_attendances.first.student_statuses[n].student.first_name %> </td>
@@ -35,29 +35,31 @@
                 <% end %>
                 </tr>
               <% end %>
-            <% else %>
-              <th> Name </th>
-              <% 5.times do |day| %>
-              <th colspan="<%= @dayAttendances[day].count.to_s %>"> <%= (@date.to_date + day).to_s %> </th>
-              <% end %>
-              <tr>
-              <td></td>
-              <% 5.times do |day| %>
-                <% @dayAttendances[day].each do |d| %>
-                  <td> <%= d.subject_attendance.subject.name %> </td>
-                <% end %>
-              <% end %>
-              </tr>
-              <% @dayAttendances.first.first.student_statuses.count.times do |n| %>
-                <tr>
-                <td> <%= @dayAttendances.first.first.student_statuses[n].student.first_name + " " + @dayAttendances.first.first.student_statuses[n].student.last_name %> </td>
-                <% 5.times do |day| %>
-                  <% @dayAttendances[day].each do |d| %>
-                    <td> <%= d.student_statuses[n].status %> </td>
+
+              <% elsif @mode == "office" %>
+
+                <% if !@dayAttendances.first.nil? %>
+                  <th> Name </th>
+                  <% 5.times do |day| %>
+                    <th colspan="<%= @dayAttendances.where("date = ?", (Date.commercial(2016, @week) + day).to_s).count%>"> <%= (Date.commercial(2016, @week.to_i) + day).to_s %> </th>
+                  <% end %>
+
+                  <tr>
+                  <td></td>
+                    <% @dayAttendances.each do |d| %>
+                      <td> <%= d.subject_attendance.subject.name %> </td>
+                    <% end %>
+                  </tr>
+
+                  <% @dayAttendances.first.student_statuses.count.times do |n| %>
+                    <tr>
+                    <td> <%= @dayAttendances.first.student_statuses[n].student.first_name %> </td>
+                      <% @dayAttendances.each do |d| %>
+                        <td> <%= d.student_statuses[n].status %> </td>
+                    <% end %>
+                    </tr>
                   <% end %>
                 <% end %>
-                </tr>
-              <% end %>
             <% end %>
             </table>
         </ul>

@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20161210050219) do
   end
 
   create_table "day_attendances", force: :cascade do |t|
+    t.integer  "attendance_id"
     t.integer  "subject_attendance_id"
     t.date     "date"
     t.datetime "created_at",            null: false
