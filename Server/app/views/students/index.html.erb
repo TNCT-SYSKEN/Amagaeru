@@ -8,6 +8,23 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button"
+    id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      学科
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li><a href="#">M</a></li>
+      <li><a href="#">E</a></li>
+      <li><a href="#">S</a></li>
+      <li><a href="#">C</a></li>
+      <li role="separator" class="divider"></li>
+      <li><a href="#">Separated link</a></li>
+    </ul>
+    </div>
+  </body>
+  <!--<body>
     <div class="container">
       <%= form_tag "/students/index", :method => :get do %>
       <%= select_tag :department, options_for_select(["C", "E", "S", "M"]), :prompt => "学科" %>
@@ -20,5 +37,5 @@
           <%= render @students%>
         </ul>
     </div>
-  </body>
+  </body> -->
 </html>
