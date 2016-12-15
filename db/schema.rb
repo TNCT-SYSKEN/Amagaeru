@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208075827) do
+ActiveRecord::Schema.define(version: 20161212090730) do
+
+  create_table "attendances", force: :cascade do |t|
+    t.string   "department"
+    t.integer  "grade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "day_attendances", force: :cascade do |t|
+    t.integer  "subject_attendance_id"
+    t.date     "date"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  create_table "day_timetables", force: :cascade do |t|
+    t.integer  "timetable_id"
+    t.string   "day"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "seat_data", force: :cascade do |t|
     t.integer  "number"
@@ -35,9 +56,17 @@ ActiveRecord::Schema.define(version: 20161208075827) do
 
   create_table "seats", force: :cascade do |t|
     t.string   "department"
-    t.integer  "gread"
+    t.integer  "grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "student_statuses", force: :cascade do |t|
+    t.integer  "student_id"
+    t.integer  "day_attendance_id"
+    t.integer  "status"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "students", force: :cascade do |t|
@@ -48,6 +77,37 @@ ActiveRecord::Schema.define(version: 20161208075827) do
     t.string   "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "subject_attendances", force: :cascade do |t|
+    t.integer  "subject_id"
+    t.integer  "attendance_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string   "name"
+    t.time     "start_time"
+    t.time     "finish_time"
+    t.integer  "day_timetable_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "timetables", force: :cascade do |t|
+    t.string   "department"
+    t.integer  "grade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "password_digest"
+    t.boolean  "authority",       default: false, null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
 end

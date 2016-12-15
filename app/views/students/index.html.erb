@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Students</title>
+    <%= stylesheet_link_tag "application", media: "all",
+                                           "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="container">
+      <%= form_tag "/students/index", :method => :get do %>
+      <%= select_tag :department, options_for_select(["C", "E", "S", "M"]), :prompt => "学科" %>
+      <%= select_tag :grade, options_for_select([1, 2, 3, 4, 5]), :prompt => "学年" %>
+      <%= submit_tag "選択" %>
+      <% end %>
+
+      <h1><%= @m %></h1>
+        <ul class="students">
+          <%= render @students%>
+        </ul>
+    </div>
+  </body>
+</html>
