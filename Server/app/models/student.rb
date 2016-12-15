@@ -12,7 +12,7 @@ class Student < ActiveRecord::Base
   end
 
   def incrementGrade
-    self.grade += self.grade
+    self.grade += 1
   end
 
   def getNumber
