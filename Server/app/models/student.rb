@@ -1,6 +1,6 @@
 class Student < ActiveRecord::Base
-  def getdepartment
-    department
+  def getdepertment
+    depertment
   end
 
   def getGrade
@@ -12,7 +12,7 @@ class Student < ActiveRecord::Base
   end
 
   def incrementGrade
-    self.grade += self.grade
+    self.grade += 1
   end
 
   def getNumber

@@ -1,10 +1,18 @@
 class AttendancesController < ApplicationController
     def index
-      if user_params.include?("department") && user_params.include?("grade") && user_params.include?("subject")
-        @m = user_params["department"].empty? || user_params["grade"].empty? || user_params["subject"].empty? ?  "Error: Invalid Parameters" : user_params["department"] + "科" + user_params["grade"] + "年 " + Subject.where("id = ?", user_params["subject"]).first.name
-        @subjectAttendance = SubjectAttendance.where("subject_id = ?", user_params["subject"]).first
-      else
-        @m = "Please select department, grade and subject"
+      depertment = user_params["depertment"].blank? ? "C" : user_params["depertment"]
+      grade = (user_params["grade"].blank? ? 1 : user_params["grade"]).to_s
+      @week = (user_params["week"].blank? ? 14 : user_params["week"]).to_i
+      @mode = user_params["mode"].blank? ? "office" : user_params["mode"]
+
+      attendance_id = Attendance.where("depertment = ? and grade = ?", depertment, grade).first ? Attendance.where("depertment = ? and grade = ?", depertment, grade).first.id : 0
+
+      if @mode == "teacher"
+        @subjectAttendance = SubjectAttendance.where("subject_id = ? and attendance_id = ?", user_params["subject"], attendance_id).first
+        @message = depertment + "科" + grade + "年 " + @subjectAttendance.subject.name
+      elsif @mode == "office"
+        @dayAttendances = DayAttendance.where("attendance_id = ? and date between ? and ?", attendance_id, (Date.commercial(2016, @week)).to_s, (Date.commercial(2016, @week) + 5).to_s)
+        @message = depertment + "科" + grade + "年" + " 第" + @week.to_s + "週"
       end
     end
 
