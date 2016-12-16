@@ -4,7 +4,7 @@ a = ["C", "E", "S", "M"]
     first_name  = Faker::Name.first_name
     last_name = Faker::Name.last_name
     Student.create(depertment: a[n],
-                   grade: n,
+                   grade: n + 1,
                    number: m + 1,
                    first_name: first_name,
                    last_name: last_name)
