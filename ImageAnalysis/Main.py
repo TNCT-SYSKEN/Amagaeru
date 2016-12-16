@@ -83,14 +83,17 @@ if __name__ == '__main__':
     
 
     # imgに検出した円を書き込む
+    min_tolerance = 0.95
+    max_tolerance = 1.05
     if circles is not None:
         for (x, y, r) in circles[0]:
             i = 0
             for table_c in table_correction:
                 j = 0
-                for (correction_x, correction_y, correction_r) in table_c:
-                    min_tolerance = 0.95 ; max_tolerance = 1.05;
-                    if min_tolerance * correction_x < x < max_tolerance * correction_x and min_tolerance * correction_y < y < max_tolerance * correction_y and min_tolerance * correction_r < r < max_tolerance * correction_r:
+                for (correction_x, correction_y, correction_r) in table_c:                    
+                    if min_tolerance * correction_x < x < max_tolerance * correction_x and \
+                       min_tolerance * correction_y < y < max_tolerance * correction_y and \
+                       min_tolerance * correction_r < r < max_tolerance * correction_r:
                         if correction_x == x and correction_y == y and correction_r == r:
                             cv2.circle(img, (x, y), r, (255, 255, 255), 5)
                             table[i][j] = 1
