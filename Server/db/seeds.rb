@@ -47,26 +47,29 @@ end
 Attendance.create(depertment: "C",
                   grade: 1)
 
-20.times do |n|
-  SubjectAttendance.create(subject_id: n + 1,
-                           attendance_id: 1)
-end
+Attendance.create(depertment: "E",
+                  grade: 2)
 
-20.times do |n|
-  d = n / 4
-  4.times do |m|
-    DayAttendance.create(attendance_id: 1,
-                         subject_attendance_id: n + 1,
-                         date: "2016-04-" + (Date.commercial(2016, 14 + m) + d).day.to_s)
-  end
-end
+Attendance.create(depertment: "S",
+                  grade: 3)
 
-20.times do |l|
-  4.times do |n|
-    40.times do |m|
-      StudentStatus.create(status: rand(2),
-                           day_attendance_id: (4 * l) + n + 1,
-                           student_id: m + 1)
+Attendance.create(depertment: "M",
+                  grade: 4)
+4.times do |a|
+  20.times do |n|
+    SubjectAttendance.create(subject_id: n + 1,
+                             attendance_id: a + 1)
+    d = n / 4
+
+    4.times do |m|
+      DayAttendance.create(attendance_id: a + 1,
+                           subject_attendance_id: (4 * a) + n + 1,
+                           date: "2016-04-" + (Date.commercial(2016, 14 + m) + d).day.to_s)
+      40.times do |l|
+        StudentStatus.create(status: rand(2),
+                             day_attendance_id: (80 * a + 4 * n) + m + 1,
+                             student_id: l + 1)
+      end
     end
   end
 end
