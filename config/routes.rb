@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "timetables/index"
   get "attendances/index"
   get "seats/index"
+  get "sessions/menu"
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
