@@ -1,7 +1,7 @@
 class CreateSeats < ActiveRecord::Migration
   def change
     create_table :seats do |t|
-      t.string :department
+      t.string :depertment
       t.integer :gread
 
       t.timestamps null: false

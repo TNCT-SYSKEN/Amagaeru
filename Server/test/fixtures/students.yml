@@ -1,14 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  department: MyString
+  depertment: MyString
   grade: 1
   number: 1
   first_name: MyString
   last_name: MyString
 
 two:
-  department: MyString
+  depertment: MyString
   grade: 1
   number: 1
   first_name: MyString

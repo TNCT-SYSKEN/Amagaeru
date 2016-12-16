@@ -10,7 +10,7 @@
   <body>
     <div class="container">
       <%= form_tag "/timetables/index", :method => :get do %>
-      <%= select_tag :department, options_for_select(["C", "E", "S", "M"]), :prompt => "学科" %>
+      <%= select_tag :depertment, options_for_select(["C", "E", "S", "M"]), :prompt => "学科" %>
       <%= select_tag :grade, options_for_select([1, 2, 3, 4, 5]), :prompt => "学年" %>
       <%= submit_tag "選択" %>
       <% end %>
