@@ -10,8 +10,8 @@
       <% end %>
 
       <h1><%= @message %></h1>
-        <ul class="attendance">
-            <table border="1">
+        <ul>
+            <table class="table table-bordered table-hover">
             <% if @mode == "teacher" %>
               <th> Name </th>
               <% @subjectAttendance.day_attendances.each do |a| %>
@@ -46,7 +46,7 @@
                     <tr>
                     <td> <%= @dayAttendances.first.student_statuses[n].student.first_name %> </td>
                       <% @dayAttendances.each do |d| %>
-                        <td> <%= d.student_statuses[n].status %> </td>
+                        <td class="<%= "absence" unless d.student_statuses[n].status == 1%>"></td>
                     <% end %>
                     </tr>
                   <% end %>
