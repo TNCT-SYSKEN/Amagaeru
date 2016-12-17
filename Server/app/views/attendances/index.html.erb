@@ -3,31 +3,37 @@
       <%= form_tag "/attendances/index", :method => :get do %>
       <%= select_tag :depertment, options_for_select(["C", "E", "S", "M"]), :prompt => "学科" %>
       <%= select_tag :grade, options_for_select(1..5), :prompt => "学年" %>
-      <%= select_tag :week, options_for_select(1..52), :prompt => "週" %>
-      <%= select_tag :subject, options_for_select(Subject.all.map { |s| [s.name, s.id] }), :prompt => "科目" %>
-      <%= select_tag :mode, options_for_select(["office", "teacher"]), :prompt => "モード" %>
+      <% if $mode == "office" %>
+        <%= select_tag :week, options_for_select(1..52), :prompt => "週" %>
+      <% end %>
+      <% if $mode == "teacher" %>
+        <%= select_tag :subject, options_for_select(Subject.all.map { |s| [s.name, s.id] }), :prompt => "科目" %>
+      <% end %>
+      <!--<%= select_tag :mode, options_for_select(["office", "teacher"]), :prompt => "モード" %>-->
       <%= submit_tag "選択" %>
       <% end %>
 
       <h1><%= @message %></h1>
         <ul class="attendance">
             <table border="1">
-            <% if @mode == "teacher" %>
-              <th> Name </th>
-              <% @subjectAttendance.day_attendances.each do |a| %>
-              <th> <%= a.date %> </th>
-              <% end %>
-
-              <% @subjectAttendance.day_attendances.first.student_statuses.count.times do |n| %>
-                <tr>
-                <td> <%= @subjectAttendance.day_attendances.first.student_statuses[n].student.first_name %> </td>
+            <% if $mode == "teacher" %>
+              <% if !@subjectAttendance.blank?%>
+                <th> Name </th>
                 <% @subjectAttendance.day_attendances.each do |a| %>
-                  <td> <%= a.student_statuses[n].status %> </td>
+                <th> <%= a.date %> </th>
                 <% end %>
-                </tr>
-              <% end %>
 
-              <% elsif @mode == "office" %>
+                <% @subjectAttendance.day_attendances.first.student_statuses.count.times do |n| %>
+                  <tr>
+                    <td> <%= @subjectAttendance.day_attendances.first.student_statuses[n].student.first_name %> </td>
+                    <% @subjectAttendance.day_attendances.each do |a| %>
+                    <td> <%= a.student_statuses[n].status %> </td>
+                    <% end %>
+                  </tr>
+
+                  <% end %>
+                <% end %>
+              <% elsif $mode == "office" %>
 
                 <% if !@dayAttendances.first.nil? %>
                   <th> Name </th>

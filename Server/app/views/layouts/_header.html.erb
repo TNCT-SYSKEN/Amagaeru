@@ -3,8 +3,12 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <%= image_tag 'logo_long.png', :size => '284x41', :align => 'left' %>
-        <li><%= link_to "Home",   '#' %></li>
-        <li><%= link_to "Log in", '#' %></li>
+        <% if $mode == "office" %>
+          <li><%= link_to "Home", sessions_menu_path %></li>
+        <% else %>
+          <li><%= link_to "Home", root_path %></li>
+        <% end %>
+        <li><%= link_to "Log in", root_path %></li>
       </ul>
     </nav>
   </div>
