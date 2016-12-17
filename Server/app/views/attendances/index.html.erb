@@ -55,11 +55,10 @@
                     <td class="
                       <%= if d.student_statuses[n].status == 2 then
                         "absence1"
-                      elsif d.student_statuses[n].status == 1 then
+                      elsif  d.student_statuses[n].status == 1 then
                         "absence2"
                       end %>">
                     </td>
-                    <!-- <td class="<%= "absence2" if d.student_statuses[n].status == 2%>"></td> -->
                   <% end %>
                   </tr>
                 <% end %>
