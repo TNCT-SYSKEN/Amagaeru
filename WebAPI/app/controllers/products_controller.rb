@@ -5,6 +5,10 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    respond_to do |format|
+      format.html # app/views/products/index.html.erb
+      format.json # app/views/products/index.json.jbuilder
+    end
   end
 
   # GET /products/1
