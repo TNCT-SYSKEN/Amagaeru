@@ -3,7 +3,7 @@ a = ["C", "E", "S", "M"]
   40.times do |m|
     first_name  = Faker::Name.first_name
     last_name = Faker::Name.last_name
-    Student.create(depertment: a[n],
+    Student.create(department: a[n],
                    grade: n + 1,
                    number: m + 1,
                    first_name: first_name,
@@ -11,7 +11,7 @@ a = ["C", "E", "S", "M"]
   end
 end
 
-Timetable.create(depertment: "C",
+Timetable.create(department: "C",
                  grade: 1)
 
 d = ["Mon", "Tue", "Wed", "Thu", "Fri"]
@@ -44,16 +44,16 @@ s = ["古文", "英語", "線形代数", "政治経済", "物理", "生物", "�
                  day_timetable_id: n + 1)
 end
 
-Attendance.create(depertment: "C",
+Attendance.create(department: "C",
                   grade: 1)
 
-Attendance.create(depertment: "E",
+Attendance.create(department: "E",
                   grade: 2)
 
-Attendance.create(depertment: "S",
+Attendance.create(department: "S",
                   grade: 3)
 
-Attendance.create(depertment: "M",
+Attendance.create(department: "M",
                   grade: 4)
 4.times do |a|
   20.times do |n|

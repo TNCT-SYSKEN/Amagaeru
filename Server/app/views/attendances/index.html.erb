@@ -1,7 +1,7 @@
 <% provide(:title, "Attendance") %>
     <div class="container">
       <%= form_tag "/attendances/index", :method => :get do %>
-      <%= select_tag :depertment, options_for_select(["C", "E", "S", "M"]), :prompt => "学科" %>
+      <%= select_tag :department, options_for_select(["C", "E", "S", "M"]), :prompt => "学科" %>
       <%= select_tag :grade, options_for_select(1..5), :prompt => "学年" %>
       <% if $mode == "office" %>
         <%= select_tag :week, options_for_select(1..52), :prompt => "週" %>

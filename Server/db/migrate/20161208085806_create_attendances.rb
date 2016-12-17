@@ -3,7 +3,7 @@ class CreateAttendances < ActiveRecord::Migration
     create_table :attendances do |t|
       t.string :department
       t.integer :grade
-
+      
       t.timestamps null: false
     end
   end
