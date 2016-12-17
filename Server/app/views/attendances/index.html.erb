@@ -52,11 +52,12 @@
                   <tr>
                   <td> <%= @dayAttendances.first.student_statuses[n].student.first_name %> </td>
                   <% @dayAttendances.each do |d| %>
+
                     <td class="
                       <%= if d.student_statuses[n].status == 2 then
-                        "absence1"
+                        "absence1 danger"
                       elsif  d.student_statuses[n].status == 1 then
-                        "absence2"
+                        "absence2 warning"
                       end %>">
                     </td>
                   <% end %>
