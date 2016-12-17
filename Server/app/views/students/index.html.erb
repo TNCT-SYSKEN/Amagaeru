@@ -1,0 +1,48 @@
+<<<<<<< HEAD
+<% provide(:title, "Student") %>
+=======
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Students</title>
+    <%= stylesheet_link_tag "application", media: "all",
+                                           "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button"
+    id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      学科
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li><a href="#">M</a></li>
+      <li><a href="#">E</a></li>
+      <li><a href="#">S</a></li>
+      <li><a href="#">C</a></li>
+      <li role="separator" class="divider"></li>
+      <li><a href="#">Separated link</a></li>
+    </ul>
+    </div>
+  </body>
+  <!--<body>
+>>>>>>> webdesign
+    <div class="container">
+      <%= form_tag "/students/index", :method => :get do %>
+      <%= select_tag :depertment, options_for_select(["C", "E", "S", "M"]), :prompt => "学科" %>
+      <%= select_tag :grade, options_for_select([1, 2, 3, 4, 5]), :prompt => "学年" %>
+      <%= submit_tag "選択" %>
+      <% end %>
+
+      <h1><%= @m %></h1>
+        <ul class="students">
+          <%= render @students%>
+        </ul>
+    </div>
+<<<<<<< HEAD
+=======
+  </body> -->
+</html>
+>>>>>>> webdesign

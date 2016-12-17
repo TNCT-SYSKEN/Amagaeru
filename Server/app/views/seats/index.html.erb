@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Students</title>
+    <%= stylesheet_link_tag "application", media: "all",
+    "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="container">
+      <%= form_tag "/seats/index", :method => :get do %>
+      <%= select_tag :depertment, options_for_select(["C", "E", "S", "M"]), :prompt => "学科" %>
+      <%= select_tag :grade, options_for_select([1, 2, 3, 4, 5]), :prompt => "学年" %>
+      <%= submit_tag "選択" %>
+      <% end %>
+      <h1><%= @m %></h1>
+      <ul class="seat">
+        <% if !@seat.nil? %>
+        <table border="1">
+          <th></td><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th>
+          <% 9.times do |n| %>
+          <tr>
+            <td> <%= n + 1 %> </td>
+            <% @seat.seat_line.each do |t| %>
+            <td> <%= t.seat_data[n].last_name unless t.seat_data[n].nil? %><br><%= t.seat_data[n].number unless t.seat_data[n].nil? %></td>
+            <% end %>
+          </tr>
+          <% end %>
+        </table>
+        <% end %>
+      </ul>
+    </div>
+  </body>
+</html>
