@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  line_no: 1
-  seat_id: 
-
-two:
-  line_no: 1
-  seat_id: 
