@@ -8,6 +8,14 @@ body {
   background-color: #fafacd;
 }
 
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
 table {
   table-layout: fixed;
 }
@@ -16,12 +24,16 @@ th {
   width: 120px;
 }
 
-section {
-  overflow: auto;
+td {
+  border: 1px solid gray;
+  text-align: center;
+  width:  50px;
+  height: 50px;
 }
 
-textarea {
-  resize: vertical;
+.absence {
+   background-color: #FF7272;
+   background-image: linear-gradient(-45deg, transparent 49%, black 49%, black 51%, transparent 51%, transparent);
 }
 
 .center {
