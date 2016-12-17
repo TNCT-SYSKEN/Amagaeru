@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\__pycache__"
   ],
-  "SelectedNode": "\\Binarization2.py",
+  "SelectedNode": "\\MouseColor.py",
   "PreviewInSolutionExplorer": false
 }

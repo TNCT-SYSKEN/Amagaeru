@@ -77,24 +77,26 @@ if __name__ == '__main__':
     maxRadius ・・・ 最大半径
     """
     circles = cv2.HoughCircles(canny_img, cv2.HOUGH_GRADIENT,
-                dp=2, minDist=20, param1=20, param2=50,
-                minRadius=10, maxRadius=60)
+                dp=2, minDist=50, param1=20, param2=50,
+                minRadius=10, maxRadius=69)
 
     
 
     # imgに検出した円を書き込む
+    min_tolerance = 0.85
+    max_tolerance = 1.3
     if circles is not None:
         for (x, y, r) in circles[0]:
             i = 0
             for table_c in table_correction:
                 j = 0
-                for (correction_x, correction_y, correction_r) in table_c:
-                    min_tolerance = 0.95 ; max_tolerance = 1.05;
-                    if min_tolerance * correction_x < x < max_tolerance * correction_x and min_tolerance * correction_y < y < max_tolerance * correction_y and min_tolerance * correction_r < r < max_tolerance * correction_r:
-                        if correction_x == x and correction_y == y and correction_r == r:
-                            cv2.circle(img, (x, y), r, (255, 255, 255), 5)
-                            table[i][j] = 1
-                            # print (x, y, r)
+                for (correction_x, correction_y, correction_r) in table_c:                    
+                    if min_tolerance * correction_x < x < max_tolerance * correction_x and \
+                       min_tolerance * correction_y < y < max_tolerance * correction_y and \
+                       min_tolerance * correction_r < r < max_tolerance * correction_r:
+                        cv2.circle(img, (x, y), r, (255, 255, 255), 5)
+                        table[i][j] = 1
+                        # print (x, y, r)
                     j += 1
                 i += 1
 
