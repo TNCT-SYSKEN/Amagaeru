@@ -1,15 +1,13 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
-    <nav>
-      <ul class="nav navbar-nav navbar-right" style="color: #7f4702">
-        <%= image_tag 'logo_long.png', :size => '284x41', :align => 'left' %>
-        <% if $mode == "office" %>
-          <li><%= link_to "Home", sessions_menu_path %></li>
-        <% else %>
-          <li><%= link_to "Home", root_path %></li>
-        <% end %>
-        <li><%= link_to "Log in", root_path %></li>
-      </ul>
-    </nav>
+    <%= image_tag 'logo_long.png', :size => '284x41', :align => 'left' %>
+    <ul class="nav navbar-nav navbar-right" style="color: #7f4702">
+      <% if $mode == "office" %>
+        <li><%= link_to "Home", sessions_menu_path %></li>
+      <% else %>
+        <li><%= link_to "Home", root_path %></li>
+      <% end %>
+      <li><%= link_to "Log in", root_path %></li>
+    </ul>
   </div>
-</header>
+</nav>
