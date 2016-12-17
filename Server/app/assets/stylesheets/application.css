@@ -83,8 +83,12 @@ p {
 }
 
 .navbar-default .navbar-nav > li > a {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #bd6a03;
+  color: #7f4702;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  background-color: #905103;
+  color: #fafacd;
 }
 /*
 .navbar-fixed-top .navbar-nav > li {
