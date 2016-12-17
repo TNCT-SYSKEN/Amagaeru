@@ -23,7 +23,8 @@
           <tr>
             <td> <%= n + 1 %> </td>
             <% @seat.seat_line.each do |t| %>
-            <td align="center"> <%= t.seat_data[n].last_name unless t.seat_data[n].nil? %><br></td>
+            <td align="center"> <%= t.seat_data[n].last_name unless t.seat_data[n].nil? %>
+              <%= t.seat_data[n].first_name unless t.seat_data[n].nil? %><br></td>
             <% end %>
           </tr>
           <% end %>
