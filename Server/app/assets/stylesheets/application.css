@@ -31,6 +31,14 @@ td {
   border: 3px solid gray;
   /*text-align: center;*/
   height: 25px;
+/*
+  @if a.student_statuses[n].status == 0 {
+    background-color: #ffffff;
+  } @else if a.student_statuses[n].status == 1 {
+    background-color: #ff0000;
+  } @else  a.student_statuses[n].status == 2 {
+    background-color: #00ffff;
+  }*/
 }
 
 

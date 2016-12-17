@@ -28,7 +28,7 @@
                 <tr>
                   <td> <%= @subjectAttendance.day_attendances.first.student_statuses[n].student.first_name %> </td>
                   <% @subjectAttendance.day_attendances.each do |a| %>
-                    <td> <%= a.student_statuses[n].status %> </td>
+                  <td> <%= a.student_statuses[n].status %> </td>
                   <% end %>
                 </tr>
               <% end %>
