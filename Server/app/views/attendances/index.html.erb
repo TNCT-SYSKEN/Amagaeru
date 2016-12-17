@@ -1,16 +1,16 @@
 <% provide(:title, "Attendance") %>
     <div class="container">
       <%= form_tag "/attendances/index", :method => :get do %>
-      <%= select_tag :department, options_for_select(["C", "E", "S", "M"]), :prompt => "学科" %>
-      <%= select_tag :grade, options_for_select(1..5), :prompt => "学年" %>
+      <%= select_tag :department, options_for_select(["C", "E", "S", "M"]), :prompt => "学科", class: 'btn btn-success' %>
+      <%= select_tag :grade, options_for_select(1..5), :prompt => "学年", class: 'btn btn-success' %>
       <% if $mode == "office" %>
-        <%= select_tag :week, options_for_select(1..52), :prompt => "週" %>
+        <%= select_tag :week, options_for_select(1..52), :prompt => "週", class: 'btn btn-success' %>
       <% end %>
       <% if $mode == "teacher" %>
-        <%= select_tag :subject, options_for_select(Subject.all.map { |s| [s.name, s.id] }), :prompt => "科目" %>
+        <%= select_tag :subject, options_for_select(Subject.all.map { |s| [s.name, s.id] }), :prompt => "科目", class: 'btn btn-success' %>
       <% end %>
       <!--<%= select_tag :mode, options_for_select(["office", "teacher"]), :prompt => "モード" %>-->
-      <%= submit_tag "選択" %>
+      <%= submit_tag "選択", class: 'btn btn-success' %>
       <% end %>
 
       <h1><%= @message %></h1>
