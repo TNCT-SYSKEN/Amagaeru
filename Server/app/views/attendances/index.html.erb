@@ -16,7 +16,7 @@
       <h1><%= @message %></h1>
 
         <ul>
-            <table class="table table-bordered table-hover" style="background-color: #ffffff; border-color: #0000ffs">
+            <table class="table table-bordered table-hover" style="background-color: #ffffff;">
 
             <% if $mode == "teacher" %>
               <% if !@subjectAttendance.blank?%>
@@ -52,7 +52,8 @@
                   <tr>
                   <td> <%= @dayAttendances.first.student_statuses[n].student.first_name %> </td>
                   <% @dayAttendances.each do |d| %>
-                    <td class="<%= "absence" unless d.student_statuses[n].status == 1%>"></td>
+                    <td class="<%= "absence danger" unless d.student_statuses[n].status == 1%>"></td>
+                    <td class="<%= "late warning" unless d.student_statuses[n].status == 1%>"></td>
                   <% end %>
                   </tr>
                 <% end %>
