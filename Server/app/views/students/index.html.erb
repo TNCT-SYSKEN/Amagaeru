@@ -13,16 +13,19 @@
   <div class="container">
     <div class="form-horizontal" role="form">
       <%= form_tag "/students/index", :method => :get do %>
-        <%= select_tag :department, options_for_select(["C", "E", "S", "M"]), :prompt => "学科", class: 'btn btn-success'%> 
+        <%= select_tag :department, options_for_select(["C", "E", "S", "M"]), :prompt => "学科", class: 'btn btn-success'%>
         <%= select_tag :grade, options_for_select([1, 2, 3, 4, 5]), :prompt => "学年", class: 'btn btn-success'%>
         <%= submit_tag "選択", class: 'btn btn-success' %>
       <% end %>
     </div>
 
       <h1><%= @m %></h1>
-        <ul class="students">
-          <%= render @students%>
-        </ul>
+        <table class="table table-bordered table-hover" style="background-color: #ffffff;">
+          <tr><td>出席番号</td><td>名前</td><tr>
+          <tr>
+            <%= render @students%>
+          </tr>
+        </table>
     </div>
   </body>
 </html>
