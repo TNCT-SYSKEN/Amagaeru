@@ -7,10 +7,12 @@ class SessionsController < ApplicationController
       # ユーザーログイン後にユーザー情報のページにリダイレクトする
       log_in user
     if user.authority?
+      $mode = "office"
       redirect_to sessions_menu_path
       return
     else
-      redirect_to attendances_index_path
+      $mode = "teacher"
+      redirect_to attendances_index0_path
     end
     else
       # エラーメッセージを作成する

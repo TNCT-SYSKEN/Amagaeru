@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Students</title>
+    <%= stylesheet_link_tag "application", media: "all",
+                                           "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="container">
+      <%= form_tag "/attendances/index", :method => :get do %>
+      <%= select_tag :department, options_for_select(["C", "E", "S", "M"]), :prompt => "学科" %>
+      <%= select_tag :grade, options_for_select([1, 2, 3, 4, 5]), :prompt => "学年" %>
+      <%= select_tag :subject, options_for_select([1, 2, 3]), :prompt => "科目" %>
+      <%= submit_tag "選択" %>
+      <% end %>
+
+      <h1><%= @m %></h1>
+        <ul class="attendance">
+          <% if !@subjectAttendance.nil? %>
+            <table border="1">
+            <th> Name </th>
+            <% @subjectAttendance.day_attendances.each do |a| %>
+            <th> <%= a.date %> </th>
+            <% end %>
+            <% @subjectAttendance.day_attendances.first.student_statuses.count.times do |n| %>
+              <tr>
+              <td> <%= @subjectAttendance.day_attendances.first.student_statuses[n].student.first_name %> </td>
+              <% @subjectAttendance.day_attendances.each do |a| %>
+                <td> <%= a.student_statuses[n].status %></td>
+              <% end %>
+              </tr>
+            <% end %>
+            </table>
+          <% end %>
+        </ul>
+    </div>
+  </body>
+</html>

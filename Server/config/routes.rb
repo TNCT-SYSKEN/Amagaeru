@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'sessions#new'
   get 'users/new'
 
   get 'sessions/new'
@@ -6,6 +7,8 @@ Rails.application.routes.draw do
   get "students/index"
   get "timetables/index"
   get "attendances/index"
+  get "attendances/index0"
+  get "attendances/index1"
   get "seats/index"
   get "sessions/menu"
   get    'login'   => 'sessions#new'
