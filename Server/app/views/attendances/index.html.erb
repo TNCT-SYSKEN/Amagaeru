@@ -14,49 +14,60 @@
       <% end %>
 
       <h1><%= @message %></h1>
-        <ul class="attendance">
-            <table border="1">
+
+        <ul>
+            <table class="table table-bordered table-hover" style="background-color: #ffffff; border-color: #0000ffs">
+
             <% if $mode == "teacher" %>
               <% if !@subjectAttendance.blank?%>
                 <th> Name </th>
                 <% @subjectAttendance.day_attendances.each do |a| %>
-                <th> <%= a.date %> </th>
+                  <th> <%= a.date %> </th>
                 <% end %>
 
-                <% @subjectAttendance.day_attendances.first.student_statuses.count.times do |n| %>
-                  <tr>
-                    <td> <%= @subjectAttendance.day_attendances.first.student_statuses[n].student.first_name %> </td>
-                    <% @subjectAttendance.day_attendances.each do |a| %>
+
+              <% @subjectAttendance.day_attendances.first.student_statuses.count.times do |n| %>
+                <tr>
+                <td> <%= @subjectAttendance.day_attendances.first.student_statuses[n].student.first_name %> </td>
+                <% @subjectAttendance.day_attendances.each do |a| %>
+                  <th> <%= a.date %> </th>
+                <% end %>
+              <% end %>
+
+              <% @subjectAttendance.day_attendances.first.student_statuses.count.times do |n| %>
+                <tr>
+                  <td> <%= @subjectAttendance.day_attendances.first.student_statuses[n].student.first_name %> </td>
+                  <% @subjectAttendance.day_attendances.each do |a| %>
                     <td> <%= a.student_statuses[n].status %> </td>
-                    <% end %>
-                  </tr>
-
                   <% end %>
+                </tr>
+
+              <% end %>
+            <% end %>
+            <% elsif $mode == "office" %>
+
+              <% if !@dayAttendances.first.nil? %>
+                <th> Name </th>
+                <% 5.times do |day| %>
+                  <th colspan="<%= @dayAttendances.where("date = ?", (Date.commercial(2016, @week) + day).to_s).count%>"> <%= (Date.commercial(2016, @week.to_i) + day).to_s %> </th>
                 <% end %>
-              <% elsif $mode == "office" %>
 
-                <% if !@dayAttendances.first.nil? %>
-                  <th> Name </th>
-                  <% 5.times do |day| %>
-                    <th colspan="<%= @dayAttendances.where("date = ?", (Date.commercial(2016, @week) + day).to_s).count%>"> <%= (Date.commercial(2016, @week.to_i) + day).to_s %> </th>
-                  <% end %>
+                <tr>
+                <td></td>
+                <% @dayAttendances.each do |d| %>
+                  <td> <%= d.subject_attendance.subject.name %> </td>
+                <% end %>
+                </tr>
 
+                <% @dayAttendances.first.student_statuses.count.times do |n| %>
                   <tr>
-                  <td></td>
-                    <% @dayAttendances.each do |d| %>
-                      <td> <%= d.subject_attendance.subject.name %> </td>
-                    <% end %>
-                  </tr>
-
-                  <% @dayAttendances.first.student_statuses.count.times do |n| %>
-                    <tr>
-                    <td> <%= @dayAttendances.first.student_statuses[n].student.first_name %> </td>
-                      <% @dayAttendances.each do |d| %>
-                        <td> <%= d.student_statuses[n].status %> </td>
-                    <% end %>
-                    </tr>
+                  <td> <%= @dayAttendances.first.student_statuses[n].student.first_name %> </td>
+                  <% @dayAttendances.each do |d| %>
+                    <td class="<%= "absence" unless d.student_statuses[n].status == 1%>"></td>
                   <% end %>
+                  </tr>
                 <% end %>
+              <% end %>
             <% end %>
             </table>
         </ul>
