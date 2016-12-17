@@ -11,7 +11,7 @@
       <h1><%= @m %></h1>
         <ul class="timetable">
           <% if !@timetable.nil? %>
-            <table border="1">
+            <table class="table table-bordered table-hover" style="background-color: #ffffff;">
             <th></td><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th>
             <% 8.times do |n| %>
               <tr>

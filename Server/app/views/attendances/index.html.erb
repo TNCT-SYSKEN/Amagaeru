@@ -26,7 +26,8 @@
               <% end %>
               <% @subjectAttendance.day_attendances.first.student_statuses.count.times do |n| %>
                 <tr>
-                  <td> <%= @subjectAttendance.day_attendances.first.student_statuses[n].student.first_name %> </td>
+                  <td> <%= @subjectAttendance.day_attendances.first.student_statuses[n].student.last_name %>
+                  <%= @subjectAttendance.day_attendances.first.student_statuses[n].student.first_name %> </td>
                   <% @subjectAttendance.day_attendances.each do |a| %>
                     <td> <%= a.student_statuses[n].status %> </td>
                   <% end %>
@@ -50,7 +51,8 @@
 
                 <% @dayAttendances.first.student_statuses.count.times do |n| %>
                   <tr>
-                  <td> <%= @dayAttendances.first.student_statuses[n].student.first_name %> </td>
+                  <td> <%= @dayAttendances.first.student_statuses[n].student.last_name %>
+                     <%= @dayAttendances.first.student_statuses[n].student.first_name %> </td>
                   <% @dayAttendances.each do |d| %>
 
                     <td class="

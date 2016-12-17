@@ -17,13 +17,14 @@
       <h1><%= @m %></h1>
       <ul class="seat">
         <% if !@seat.nil? %>
-        <table border="1">
+        <table class="table table-bordered table-hover" style="background-color: #ffffff;">
           <th></td><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th>
           <% 9.times do |n| %>
           <tr>
             <td> <%= n + 1 %> </td>
             <% @seat.seat_line.each do |t| %>
-            <td> <%= t.seat_data[n].last_name unless t.seat_data[n].nil? %><br><%= t.seat_data[n].number unless t.seat_data[n].nil? %></td>
+            <td align="center"> <%= t.seat_data[n].last_name unless t.seat_data[n].nil? %>
+              <%= t.seat_data[n].first_name unless t.seat_data[n].nil? %><br></td>
             <% end %>
           </tr>
           <% end %>
