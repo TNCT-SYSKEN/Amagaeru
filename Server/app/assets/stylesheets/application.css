@@ -41,6 +41,14 @@ td {
   }*/
 }
 
+/*表*//*
+table tr:nth-child(even) {
+background: #F9F9F9;
+}
+
+table tr:nth-child(odd) {
+background: #E0EAE0;
+}*/
 
 .absence1 {
    background-color: #ff3333;
