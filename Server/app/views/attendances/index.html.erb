@@ -11,7 +11,7 @@
 
       <h1><%= @message %></h1>
         <ul>
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover" style="background-color: #ffffff; border-color: #0000ffs">
             <% if @mode == "teacher" %>
               <th> Name </th>
               <% @subjectAttendance.day_attendances.each do |a| %>
