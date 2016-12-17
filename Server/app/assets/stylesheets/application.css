@@ -33,6 +33,15 @@ td {
   height: 25px;
 }
 
+/*表*/
+table tr:nth-child(even) {
+background: #F9F9F9;
+}
+
+table tr:nth-child(odd) {
+background: #E0EAE0;
+}
+
 .absence1 {
    background-color: #FF3939;
    /*background-image: linear-gradient(-45deg, transparent 49%, black 49%, black 51%, transparent 51%, transparent);*/
