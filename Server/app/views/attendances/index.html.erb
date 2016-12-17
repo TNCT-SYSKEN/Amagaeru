@@ -52,8 +52,14 @@
                   <tr>
                   <td> <%= @dayAttendances.first.student_statuses[n].student.first_name %> </td>
                   <% @dayAttendances.each do |d| %>
-                    <td class="<%= "absence danger" unless d.student_statuses[n].status == 1%>"></td>
-                    <td class="<%= "late warning" unless d.student_statuses[n].status == 1%>"></td>
+                    <td class="
+                      <%= if d.student_statuses[n].status == 2 then
+                        "absence1"
+                      elsif d.student_statuses[n].status == 1 then
+                        "absence2"
+                      end %>">
+                    </td>
+                    <!-- <td class="<%= "absence2" if d.student_statuses[n].status == 2%>"></td> -->
                   <% end %>
                   </tr>
                 <% end %>
