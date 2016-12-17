@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20161216091203) do
   create_table "attendances", force: :cascade do |t|
     t.string   "department"
     t.integer  "grade"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "day_attendances", force: :cascade do |t|
@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 20161216091203) do
   create_table "seats", force: :cascade do |t|
     t.string   "department"
     t.integer  "grade"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "student_statuses", force: :cascade do |t|
@@ -76,8 +76,8 @@ ActiveRecord::Schema.define(version: 20161216091203) do
     t.integer  "number"
     t.string   "first_name"
     t.string   "last_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "subject_attendances", force: :cascade do |t|
@@ -99,8 +99,8 @@ ActiveRecord::Schema.define(version: 20161216091203) do
   create_table "timetables", force: :cascade do |t|
     t.string   "department"
     t.integer  "grade"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
