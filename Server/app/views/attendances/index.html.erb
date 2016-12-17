@@ -20,20 +20,10 @@
 
             <% if $mode == "teacher" %>
               <% if !@subjectAttendance.blank?%>
-                <th> Name </th>
-                <% @subjectAttendance.day_attendances.each do |a| %>
-                  <th> <%= a.date %> </th>
-                <% end %>
-
-
-              <% @subjectAttendance.day_attendances.first.student_statuses.count.times do |n| %>
-                <tr>
-                <td> <%= @subjectAttendance.day_attendances.first.student_statuses[n].student.first_name %> </td>
-                <% @subjectAttendance.day_attendances.each do |a| %>
-                  <th> <%= a.date %> </th>
-                <% end %>
+              <th> Name </th>
+              <% @subjectAttendance.day_attendances.each do |a| %>
+                <th> <%= a.date %> </th>
               <% end %>
-
               <% @subjectAttendance.day_attendances.first.student_statuses.count.times do |n| %>
                 <tr>
                   <td> <%= @subjectAttendance.day_attendances.first.student_statuses[n].student.first_name %> </td>
@@ -41,7 +31,6 @@
                     <td> <%= a.student_statuses[n].status %> </td>
                   <% end %>
                 </tr>
-
               <% end %>
             <% end %>
             <% elsif $mode == "office" %>
