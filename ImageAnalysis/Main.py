@@ -80,7 +80,7 @@ if __name__ == '__main__':
                 dp=2, minDist=50, param1=20, param2=50,
                 minRadius=10, maxRadius=69)
 
-    
+
 
     # imgに検出した円を書き込む
     min_tolerance = 0.85
@@ -90,7 +90,7 @@ if __name__ == '__main__':
             i = 0
             for table_c in table_correction:
                 j = 0
-                for (correction_x, correction_y, correction_r) in table_c:                    
+                for (correction_x, correction_y, correction_r) in table_c:
                     if min_tolerance * correction_x < x < max_tolerance * correction_x and \
                        min_tolerance * correction_y < y < max_tolerance * correction_y and \
                        min_tolerance * correction_r < r < max_tolerance * correction_r:
@@ -107,14 +107,21 @@ if __name__ == '__main__':
         print ()
     print ()
 
+    height, width = img.shape[:2]
+    size = ((int)(width/2), (int)(height/2))
+
+    resize = cv2.resize(img, size)
     # 表示
-    cv2.imshow("canny", canny_img)
-    cv2.imshow("gray", gray_img)
-    cv2.imshow("img", img)
+    while (True):
+        cv2.imshow("canny", cv2.resize(canny_img, size))
+        cv2.imshow("gray", cv2.resize(gray_img, size))
+        cv2.imshow("img", cv2.resize(img, size))
+        if cv2.waitKey(1) & 0xFF == ord("q"):
+            break
     #1/2サイズで描画
     # get_mouse_color(cv2.resize(img, None, fx = 1/2, fy = 1/2))
     #デフォルトサイズで描画
-    get_mouse_color(img)
+    # get_mouse_color(img)
     # cv2.imwrite("canny.png", canny_img)
     # cv2.imwrite("people_detection.png", img)
     cv2.waitKey(0)
